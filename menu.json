@@ -1,0 +1,534 @@
+[
+    {
+      "category": "Salate",
+      "categoryDescription": "Alle Salate werden mit Tomate, Gurke, Eisbergsalat und einem Dressing Ihrer Wahl zubereitet.Alle Salate werden mit Pizzabrötchen serviert.",
+      "items": [
+        {
+          "name": "Salat Festival",
+          "description": "mit Weißkraut, Zwiebeln, Ei, Peperoni-Wurst und Mais",
+          "price": "8,50 €"
+        },
+        {
+          "name": "Salat Marlen",
+          "description": "mit Kalbfleisch-Döner, gebratenen Champignons und Zwiebeln, ohne Tomaten",
+          "price": "9,50 €"
+        },
+        {
+          "name": "Salat Mexico",
+          "description": "mit Paprika, Mais, und Kalbfleisch-Döner",
+          "price": "9,50 €"
+        },
+        {
+          "name": "Chefsalat",
+          "description": "mit grünem Salat, Zwiebeln, Thunfisch, Form-Vorderschinken und Gouda,Ei",
+          "price": "9,00 €"
+        },
+        {
+          "name": "Salat Matrose",
+          "description": "mit Gurken, Shrimps, Thunfisch und Zwiebeln",
+          "price": "9,50 €"
+        },
+        {
+          "name": "Salat Roma",
+          "description": "mit Ei, Artischocken, Peperonis, Oliven und Form-Vorderschinken",
+          "price": "8,50 €"
+        },
+        {
+          "name": "Salat Hawaii",
+          "description": "mit Ananas, Paprika und Form-Vorderschinken",
+          "price": "8,00 €"
+        },
+        {
+          "name": "Krautsalat",
+          "description": "mit Weißkraut, Zwiebeln und Karotten, ohne Tomaten, Gurken und Eisbergsalat",
+          "price": "7,00 €"
+        },
+        {
+          "name": "Salat Selina",
+          "description": "mit Oliven, Karotten und Fetakäse",
+          "price": "8,50 €"
+        }
+      ]
+    },
+    {
+      "category": "Pizza",
+      "categoryDescription": "Alle Pizzen werden mit Tomatensauce und Käse zubereitet.",
+      "items": [
+        {
+          "name": "Pizza Italia",
+          "description": "mit Salami, Form-Vorderschinken und Champignons",
+          "price": "8,00 €"
+        },
+        {
+          "name": "Pizza Diavolo (scharf)",
+          "description": "mit Peperoni-Wurst, Peperoni, Paprika und Champignons",
+          "price": "8,00 €"
+        },
+        {
+          "name": "Pizza Quattro Stagioni",
+          "description": "mit Salami, Artischocken, Oliven und Champignons",
+          "price": "8,00 €"
+        },
+        {
+          "name": "Pizza Mexico",
+          "description": "mit Kalbfleisch-Döner, Zwiebeln, Mais und Paprika",
+          "price": "8,00 €"
+        },
+        {
+          "name": "Pizza Cäsar",
+          "description": "mit Peperoni-Wurst, Mozzarella, Sardellen und Oliven",
+          "price": "9,00 €"
+        },
+        {
+          "name": "Pizza Frutti di Mare",
+          "description": "mit Meeresfrüchten und Knoblauch",
+          "price": "8,00 €"
+        },
+        {
+          "name": "Pizza Spaghetti",
+          "description": "mit Spaghetti und Bolognesesauce",
+          "price": "8,00 €"
+        },
+        {
+          "name": "Pizza Fantasia",
+          "description": "mit Salami, Peperoni-Wurst, Artischocken und Zwiebeln",
+          "price": "8,00 €"
+        },
+        {
+          "name": "Pizza Lupo",
+          "description": "mit Peperoni-Wurst, Salami, Artischocken, Oliven, Champignons und Spinat",
+          "price": "9,00 €"
+        },
+        {
+          "name": "Pizza Lachs",
+          "description": "mit geräuchertem Lachs und Zwiebeln",
+          "price": "8,00 €"
+        },
+        {
+          "name": "Pizza Vegetaria (vegetarisch)",
+          "description": "mit Pilzen, Erbsen, Spinat und Broccoli",
+          "price": "8,00 €"
+        },
+        {
+          "name": "Pizza Peperoni",
+          "description": "mit Peperoni-Wurst, Peperonis und Champignons",
+          "price": "8,00 €"
+        },
+        {
+          "name": "Pizza Mozzarella",
+          "description": "mit Mozzarella und Tomaten",
+          "price": "8,00 €"
+        },
+        {
+          "name": "Pizza Funghi Prosciutto",
+          "description": "mit Champignons und Form-Vorderschinken",
+          "price": "7,00 €"
+        },
+        {
+          "name": "Pizza Funghi",
+          "description": "mit Champignons",
+          "price": "7,00 €"
+        },
+        {
+          "name": "Pizza Scampi",
+          "description": "mit Shrimps",
+          "price": "7,50 €"
+        },
+        {
+          "name": "Pizza Döner",
+          "description": "mit Kalbfleisch-Döner und Peperonis",
+          "price": "8,00 €"
+        },
+        {
+          "name": "Pizza Hawaii",
+          "description": "mit Ananas und Form-Vorderschinken",
+          "price": "7,50 €"
+        },
+        {
+          "name": "Pizza Spinat",
+          "description": "mit Spinat und Knoblauch",
+          "price": "7,50 €"
+        },
+        {
+          "name": "Pizza Margherita",
+          "description": "",
+          "price": "6,50 €"
+        },
+        {
+          "name": "Pizza Tonno",
+          "description": "mit Thunfisch",
+          "price": "7,00 €"
+        },
+        {
+          "name": "Pizza Tonno Cipolla",
+          "description": "mit Thunfisch und Zwiebeln",
+          "price": "7,00 €"
+        },
+        {
+          "name": "Pizza Salami",
+          "description": "",
+          "price": "7,00 €"
+        },
+        {
+          "name": "Pizza Funghi Salami",
+          "description": "mit Champignons und Salami",
+          "price": "7,00 €"
+        },
+        {
+          "name": "Pizza Prosciutto",
+          "description": "mit Form-Vorderschinken",
+          "price": "7,00 €"
+        }
+      ]
+    },
+    {
+      "category": "Party-Pizza",
+      "categoryDescription": "60cm x 40cmAlle Pizzen werden mit Tomatensauce und Käse zubereitet.",
+      "items": [
+        {
+          "name": "Party-Pizza Margherita",
+          "description": "",
+          "price": "20,00 €"
+        }
+      ]
+    },
+    {
+      "category": "Calzone",
+      "categoryDescription": "Ø 30cmAlle Calzonen werden mit Tomatensauce und Käse zubereitet.",
+      "items": [
+        {
+          "name": "Calzone Vegetaria",
+          "description": "mit Pilzen, Zwiebeln, Paprika und Spinat",
+          "price": "9,50 €"
+        },
+        {
+          "name": "Calzone Quattro Fromaggi",
+          "description": "mit vier Käsesorten",
+          "price": "10,00 €"
+        },
+        {
+          "name": "Döner Calzone",
+          "description": "mit Zwiebeln",
+          "price": "10,00 €"
+        },
+        {
+          "name": "Calzone Spezial",
+          "description": "mit Salami, Schinken und Pilzen",
+          "price": "9,00 €"
+        }
+      ]
+    },
+    {
+      "category": "Käseschnecken",
+      "categoryDescription": "Alle Käseschnecken werden mit einer Zutat Ihrer Wahl zubereitet.Es werden jeweils 8 Stück serviert.",
+      "items": [
+        {
+          "name": "Käseschnecken mit einer Zutat nach Wahl",
+          "description": "",
+          "price": "7,00 €"
+        }
+      ]
+    },
+    {
+      "category": "Döner Spezialitäten",
+      "categoryDescription": "Alle Taschengerichte und Rollen werden mit Weißkraut, Rotkraut, Zwiebeln, Tomaten, Gurken und einer Sauce Ihrer Wahl zubereitet.",
+      "items": [
+        {
+          "name": "Salatbrötchen",
+          "description": "",
+          "price": "5,00 €"
+        },
+        {
+          "name": "Salatrolle",
+          "description": "",
+          "price": "5,50 €"
+        },
+        {
+          "name": "Drehspieß-Salat-Box",
+          "description": "",
+          "price": "9,00 €"
+        },
+        {
+          "name": "Türkische Pizza",
+          "description": "",
+          "price": "8,00 €"
+        },
+        {
+          "name": "Drehspieß-Tüte",
+          "description": "mit Kalbfleisch vom Drehspieß, Pommes frites und einer Sauce nach Wahl",
+          "price": "7,00 €"
+        },
+        {
+          "name": "Drehspieß-Teller",
+          "description": "mit Kalbfleisch vom Drehspieß, Pommes frites, Salat und einer Sauce nach Wahl",
+          "price": "12,00 €"
+        },
+        {
+          "name": "Drehspieß Brötchen",
+          "description": "mit Kalbfleisch vom Drehspieß",
+          "price": "7,00 €"
+        },
+        {
+          "name": "Drehspieß Rolle",
+          "description": "mit Kalbfleisch vom Drehspieß",
+          "price": "8,00 €"
+        }
+      ]
+    },
+    {
+      "category": "Pasta",
+      "categoryDescription": "Alle Nudelgerichte werden mit einer Nudelsorte Ihrer Wahl zubereitet.",
+      "items": [
+        {
+          "name": "Pasta Gorgonzola",
+          "description": "",
+          "price": "9,00 €"
+        },
+        {
+          "name": "Pasta Verde",
+          "description": "mit Broccoli, Champignons und Erbsen",
+          "price": "8,00 €"
+        },
+        {
+          "name": "Pasta All Panna",
+          "description": "mit Sahnesauce",
+          "price": "9,00 €"
+        },
+        {
+          "name": "Pasta Arrabiata (scharf)",
+          "description": "mit pikanter Tomatensauce",
+          "price": "8,00 €"
+        },
+        {
+          "name": "Pasta Bolognese",
+          "description": "mit Rinderhackfleisch",
+          "price": "8,00 €"
+        },
+        {
+          "name": "Pasta Diavolo (scharf)",
+          "description": "mit Paprika und Jalapenos",
+          "price": "8,00 €"
+        },
+        {
+          "name": "Pasta Napoli",
+          "description": "mit Tomatensauce",
+          "price": "7,00 €"
+        }
+      ]
+    },
+    {
+      "category": "Pasta al Forno",
+      "categoryDescription": "Alle Gerichte werden mit Käse überbacken.",
+      "items": [
+        {
+          "name": "Penne Döner",
+          "description": "mit Kalbfleischdöner und Tomatensauce",
+          "price": "8,00 €"
+        },
+        {
+          "name": "Tortellini",
+          "description": "mit Tomatensauce",
+          "price": "8,50 €"
+        },
+        {
+          "name": "Tortellini Mare e Monti",
+          "description": "mit Shrimps und Champignons",
+          "price": "9,50 €"
+        },
+        {
+          "name": "Combinazione",
+          "description": "mit drei verschiedenen Nudelsorten und Bolognesesauce",
+          "price": "9,00 €"
+        },
+        {
+          "name": "Tortellini Bolognese",
+          "description": "mit Rinderhackfleisch",
+          "price": "9,00 €"
+        },
+        {
+          "name": "Spaghetti Tonno",
+          "description": "mit Thunfisch und Tomaten-Sahnesauce",
+          "price": "8,50 €"
+        },
+        {
+          "name": "Penne Napoli",
+          "description": "mit Tomatensauce",
+          "price": "6,50 €"
+        },
+        {
+          "name": "Penne Bolognese",
+          "description": "mit Rinderhackfleisch",
+          "price": "8,50 €"
+        },
+        {
+          "name": "Spaghetti Napoli",
+          "description": "mit Tomatensauce",
+          "price": "7,50 €"
+        },
+        {
+          "name": "Spaghetti Bolognese",
+          "description": "mit Rinderhackfleisch",
+          "price": "8,50 €"
+        }
+      ]
+    },
+    {
+      "category": "Teigschiffchen - Pide",
+      "categoryDescription": "Alle Teigschiffchen werden mit Käse zubereitet.",
+      "items": [
+        {
+          "name": "Pide Vegetale",
+          "description": "mit Paprika, Spinat, Zwiebeln und Champignons",
+          "price": "9,00 €"
+        },
+        {
+          "name": "Pide Mozzarella",
+          "description": "mit Tomaten und Mozzarella",
+          "price": "8,50 €"
+        },
+        {
+          "name": "Pide Hawaii",
+          "description": "mit Ananas und Rinderschinken",
+          "price": "8,50 €"
+        },
+        {
+          "name": "Pide Lachs",
+          "description": "mit geräuchertem Alaska-Seelachs",
+          "price": "9,50 €"
+        },
+        {
+          "name": "Pide Quattro Fromaggi",
+          "description": "mit vier Käsesorten",
+          "price": "8,00 €"
+        },
+        {
+          "name": "Pide Peperoni-Wurst",
+          "description": "",
+          "price": "8,50 €"
+        },
+        {
+          "name": "Pide Döner",
+          "description": "mit Kalbfleisch-Döner",
+          "price": "9,00 €"
+        },
+        {
+          "name": "Pide Bologna",
+          "description": "mit Bolognesesauce",
+          "price": "8,00 €"
+        },
+        {
+          "name": "Pide Käse",
+          "description": "mit Weichkäse",
+          "price": "7,00 €"
+        },
+        {
+          "name": "Pide Spinat",
+          "description": "mit Spinat und Ei",
+          "price": "8,00 €"
+        }
+      ]
+    },
+    {
+      "category": "Putenschnitzel",
+      "categoryDescription": "Alle Schnitzel werden mit Pommes frites und einem kleinen Salat serviert.",
+      "items": [
+        {
+          "name": "Paprikaschnitzel",
+          "description": "",
+          "price": "13,50 €"
+        },
+        {
+          "name": "Schnitzel Hawaii",
+          "description": "mit Ananas und Käse überbacken",
+          "price": "14,50 €"
+        },
+        {
+          "name": "Schnitzel Bolognese",
+          "description": "mit Rinderhackfleischsauce und Käse überbacken",
+          "price": "14,50 €"
+        },
+        {
+          "name": "Rahmschnitzel",
+          "description": "",
+          "price": "13,00 €"
+        },
+        {
+          "name": "Jägerschnitzel",
+          "description": "",
+          "price": "13,50 €"
+        },
+        {
+          "name": "Schnitzel Wiener Art",
+          "description": "",
+          "price": "12,00 €"
+        }
+      ]
+    },
+    {
+      "category": "Beilagen",
+      "categoryDescription": "",
+      "items": [
+        {
+          "name": "Beilagensalat",
+          "description": "mit einem Dressing nach Wahl",
+          "price": "4,00 €"
+        },
+        {
+          "name": "Chicken Nuggets (6 Stück)",
+          "description": "mit Pommes frites",
+          "price": "7,50 €"
+        },
+        {
+          "name": "Pommes frites",
+          "description": "mit einem Dip nach Wahl",
+          "price": "4,00 €"
+        }
+      ]
+    },
+    {
+      "category": "Alkoholfreie Getränke",
+      "categoryDescription": "",
+      "items": [
+        {
+          "name": "Eistee 0,5l",
+          "description": "",
+          "price": "2,00 €"
+        },
+        {
+          "name": "Ayran 0,25l",
+          "description": "",
+          "price": "1,50 €"
+        },
+        {
+          "name": "Wasser 0,5l",
+          "description": "",
+          "price": "2,25 €"
+        },
+        {
+          "name": "Red Bull 0,25l",
+          "description": "",
+          "price": "2,75 €"
+        },
+        {
+          "name": "Fanta Orange 0,33l (EINWEG)",
+          "description": "Trinke Fanta. Lebe bunter. Spritzig erfrischend begleitet die originale Fanta Orange jede Lebenssituation und macht jetzt noch mehr Spaß.",
+          "price": "2,25 €"
+        },
+        {
+          "name": "Sprite 0,33l (EINWEG)",
+          "description": "Bist du bereit für Sprite? Die einzigartige Formel aus grünen Limetten und sonnengelben Zitronen erfrischt dich maximal.",
+          "price": "2,25 €"
+        },
+        {
+          "name": "Coca-Cola 0,33l (EINWEG)",
+          "description": "Coca-Cola steht für einzigartigen Geschmack, Erfrischung und Momente voller Lebensfreude. Die 0,33l Dose - perfekt für die kleine Belohnung on the go.",
+          "price": "2,25 €"
+        },
+        {
+          "name": "Coca-Cola Zero Sugar 0,33l (EINWEG)",
+          "description": "Keine Kalorien. Null Zucker. Für alle Coke Liebhaber, die beim Geschmack keinen Kompromiss eingehen wollen.",
+          "price": "2,25 €"
+        }
+      ]
+    }
+  ]

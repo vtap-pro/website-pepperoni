@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Menu Dashboard</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:#f4f4f4;
+}
+.wrapper{
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:20px;
+    padding:25px;
+}
+.panel{
+    background:white;
+    border-radius:16px;
+    padding:20px;
+}
+.item{
+    padding:15px;
+    border:1px solid #eee;
+    border-radius:12px;
+    margin-bottom:10px;
+    cursor:pointer;
+}
+.item:hover{
+    background:#fafafa;
+}
+input, textarea{
+    width:100%;
+    padding:10px;
+    margin-bottom:12px;
+    border:1px solid #ddd;
+    border-radius:10px;
+    box-sizing:border-box;
+}
+button{
+    padding:10px 16px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    background:black;
+    color:white;
+}
+pre{
+    background:#f7f7f7;
+    padding:12px;
+    border-radius:12px;
+    overflow:auto;
+    font-size:12px;
+}
+h2,h3{
+    margin-top:0;
+}
+</style>
+</head>
+<body>
+
+<div class="wrapper">
+
+<div class="panel">
+    <h2>Menu Items</h2>
+    <div id="menuList"></div>
+</div>
+
+<div class="panel">
+    <h3>Edit Item</h3>
+
+    <input id="name" placeholder="Item Name">
+    <textarea id="desc" placeholder="Description"></textarea>
+    <input id="price" placeholder="Price">
+
+    <button onclick="saveItem()">Save</button>
+    <button onclick="addItem()">Add New</button>
+
+    <h3>JSON Output</h3>
+    <pre id="json"></pre>
+</div>
+
+</div>
+
+<script>
+let menu = [
+{
+category:"Salads",
+items:[
+{name:"Salad Festival",description:"with white cabbage and corn",price:"€8.50"},
+{name:"Marlen Salad",description:"with veal doner and mushrooms",price:"€9.50"},
+{name:"Chef Salad",description:"with tuna and Gouda cheese",price:"€9.00"}
+]
+}
+];
+
+let selected = 0;
+
+function render(){
+    let html = "";
+
+    menu[0].items.forEach((item,index)=>{
+        html += `
+        <div class="item" onclick="editItem(${index})">
+            <strong>${item.name}</strong><br>
+            ${item.description}<br>
+            <b>${item.price}</b>
+        </div>
+        `;
+    });
+
+    document.getElementById("menuList").innerHTML = html;
+    document.getElementById("json").textContent =
+        JSON.stringify(menu,null,2);
+}
+
+function editItem(index){
+    selected = index;
+    let item = menu[0].items[index];
+
+    document.getElementById("name").value = item.name;
+    document.getElementById("desc").value = item.description;
+    document.getElementById("price").value = item.price;
+}
+
+function saveItem(){
+    let item = menu[0].items[selected];
+
+    item.name = document.getElementById("name").value;
+    item.description = document.getElementById("desc").value;
+    item.price = document.getElementById("price").value;
+
+    render();
+}
+
+function addItem(){
+    menu[0].items.push({
+        name:"New Item",
+        description:"Description",
+        price:"€0.00"
+    });
+
+    render();
+}
+
+render();
+editItem(0);
+</script>
+
+</body>
+</html>

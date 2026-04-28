@@ -44,12 +44,21 @@
       transition: background .3s;
     }
     .nav-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.35rem;
-      color: #fff;
-      letter-spacing: .02em;
+      display: flex; align-items: center;
+      text-decoration: none;
     }
-    .nav-logo span { color: var(--orange); }
+    .nav-logo img {
+      height: 42px;
+      width: auto;
+      display: block;
+      mix-blend-mode: screen;   /* knocks out the black background */
+    }
+    .nav-logo-light img {
+      height: 52px;
+      width: auto;
+      display: block;
+      mix-blend-mode: multiply; /* knocks out the white background */
+    }
     .nav-links { display: flex; gap: 2.2rem; list-style: none; }
     .nav-links a {
       color: rgba(255,255,255,.78);
@@ -126,7 +135,7 @@
     .goog-te-gadget,
     #google_translate_element { display: none !important; }
     /* Google injects inline top offset on body — neutralise it */
-    body { top: 0 !important; position: static !important; }
+    body { top: 0 !important; }
     .goog-tooltip, .goog-tooltip:hover { display: none !important; }
     .goog-text-highlight { background: none !important; box-shadow: none !important; }
     #goog-gt-tt, #goog-gt-tt * { display: none !important; visibility: hidden !important; }
@@ -380,6 +389,17 @@
     }
     .menu-tabs {
       display: flex; gap: .6rem; flex-wrap: wrap;
+      overflow-x: auto; -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .menu-tabs::-webkit-scrollbar { display: none; }
+    .menu-category-desc {
+      font-size: .9rem;
+      color: #888;
+      margin-bottom: 2rem;
+      min-height: 1.4rem;
+      font-style: italic;
+      transition: opacity .2s;
     }
     .tab {
       padding: .5rem 1.2rem;
@@ -456,6 +476,27 @@
     .badge-spicy { background: rgba(192,57,43,.12); color: var(--red); }
     .badge-popular { background: rgba(230,126,34,.15); color: var(--orange); }
     .badge-veg { background: rgba(39,174,96,.12); color: #27ae60; }
+    .order-btn {
+      display: flex; align-items: center; justify-content: center; gap: .45rem;
+      margin-top: 1.1rem;
+      padding: .6rem 1rem;
+      background: var(--red);
+      color: #fff;
+      font-size: .82rem;
+      font-weight: 700;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: background .2s, transform .15s, box-shadow .2s;
+    }
+    .order-btn:hover {
+      background: var(--red-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 14px rgba(192,57,43,.35);
+    }
+    .order-btn:active { transform: translateY(0); }
+    .order-btn svg { flex-shrink: 0; }
 
     /* ─── LOCATION / HOURS ─────────────────────────────────────── */
     .location {
@@ -654,7 +695,7 @@
       border-bottom: 1px solid rgba(255,255,255,.08);
       margin-bottom: 2rem;
     }
-    .footer-brand .nav-logo { font-size: 1.5rem; margin-bottom: 1rem; display: block; }
+    .footer-brand .nav-logo { margin-bottom: 1rem; }
     .footer-brand p { font-size: .88rem; line-height: 1.7; max-width: 260px; }
     .footer-col h4 {
       color: #fff;
@@ -715,7 +756,9 @@
 
 <!-- ─── NAV ──────────────────────────────────────────────────── -->
 <nav>
-  <span class="nav-logo">Bistro <span>Pepperoni</span></span>
+  <a href="#home" class="nav-logo">
+    <img src="pepperoni-logo.png" alt="Bistro Pizzeria Pepperoni" />
+  </a>
   <ul class="nav-links">
     <li><a href="#about">Über uns</a></li>
     <li><a href="#menu">Speisekarte</a></li>
@@ -876,106 +919,10 @@
       <span class="section-label">Speisekarte</span>
       <h2 class="section-title">Unsere Köstlichkeiten</h2>
     </div>
-    <div class="menu-tabs">
-      <button class="tab active">Alle</button>
-      <button class="tab">Pizza</button>
-      <button class="tab">Pasta</button>
-      <button class="tab">Salate</button>
-      <button class="tab">Döner</button>
-    </div>
+    <div class="menu-tabs" id="menu-tabs"></div>
   </div>
-
-  <div class="menu-grid">
-    <div class="menu-card">
-      <span class="menu-card-emoji">🍕</span>
-      <h3>Pizza Margherita</h3>
-      <p>Tomatensauce, Mozzarella und frisches Basilikum – der Klassiker schlechthin.</p>
-      <div class="menu-card-footer">
-        <span class="price">ab €6,50</span>
-        <span class="badge badge-veg">Vegetarisch</span>
-      </div>
-    </div>
-
-    <div class="menu-card">
-      <span class="menu-card-emoji">🌶️</span>
-      <h3>Pizza Diavolo</h3>
-      <p>Tomatensauce, Mozzarella, Peperoni-Salami und scharfe Paprika – feurig scharf.</p>
-      <div class="menu-card-footer">
-        <span class="price">ab €8,50</span>
-        <span class="badge badge-spicy">Scharf</span>
-      </div>
-    </div>
-
-    <div class="menu-card">
-      <span class="menu-card-emoji">🍍</span>
-      <h3>Pizza Hawaii</h3>
-      <p>Tomatensauce, Mozzarella, Schinken und Ananas – süß-herzhafter Genuss.</p>
-      <div class="menu-card-footer">
-        <span class="price">ab €8,00</span>
-        <span class="badge badge-popular">Beliebt</span>
-      </div>
-    </div>
-
-    <div class="menu-card">
-      <span class="menu-card-emoji">🥗</span>
-      <h3>Salat Festival</h3>
-      <p>Weißkohl, Zwiebeln, Ei, Peperoni-Wurst und Mais – bunt und frisch.</p>
-      <div class="menu-card-footer">
-        <span class="price">ab €7,00</span>
-        <span class="badge badge-popular">Beliebt</span>
-      </div>
-    </div>
-
-    <div class="menu-card">
-      <span class="menu-card-emoji">🍝</span>
-      <h3>Pasta Bolognese</h3>
-      <p>Al-dente Pasta mit reichhaltiger Hackfleischsauce nach Hausrezept.</p>
-      <div class="menu-card-footer">
-        <span class="price">ab €7,50</span>
-        <span class="badge badge-popular">Beliebt</span>
-      </div>
-    </div>
-
-    <div class="menu-card">
-      <span class="menu-card-emoji">🥙</span>
-      <h3>Drehspieß-Teller</h3>
-      <p>Rotisserie-Kalbfleisch mit Pommes frites und frischem Salat.</p>
-      <div class="menu-card-footer">
-        <span class="price">ab €9,00</span>
-        <span class="badge badge-popular">Spezialität</span>
-      </div>
-    </div>
-
-    <div class="menu-card">
-      <span class="menu-card-emoji">🥩</span>
-      <h3>Schnitzel</h3>
-      <p>Goldbraun paniertes Schnitzel mit Pommes frites und Salatbeilage.</p>
-      <div class="menu-card-footer">
-        <span class="price">ab €12,00</span>
-        <span class="badge badge-popular">Hausgemacht</span>
-      </div>
-    </div>
-
-    <div class="menu-card">
-      <span class="menu-card-emoji">🫕</span>
-      <h3>Calzone Quattro Formaggi</h3>
-      <p>Gefüllte Teigtasche mit vier edlen Käsesorten – cremig und herzhaft.</p>
-      <div class="menu-card-footer">
-        <span class="price">ab €9,00</span>
-        <span class="badge badge-veg">Vegetarisch</span>
-      </div>
-    </div>
-
-    <div class="menu-card">
-      <span class="menu-card-emoji">🍝</span>
-      <h3>Pasta Arrabiata</h3>
-      <p>Würzig-scharfe Tomatensauce mit Knoblauch und Chili – ein Feuerwerk.</p>
-      <div class="menu-card-footer">
-        <span class="price">ab €7,00</span>
-        <span class="badge badge-spicy">Scharf</span>
-      </div>
-    </div>
-  </div>
+  <div class="menu-category-desc" id="menu-category-desc"></div>
+  <div class="menu-grid" id="menu-grid"></div>
 </section>
 
 <!-- ─── GALLERY ───────────────────────────────────────────────── -->
@@ -1036,10 +983,6 @@
       <div style="display:flex;align-items:center;gap:.8rem;font-size:.95rem;color:rgba(255,255,255,.75);">
         <span style="font-size:1.2rem;">📍</span>
         <span>Rheinuferstraße 44, 56341 Kamp-Bornhofen</span>
-      </div>
-      <div style="display:flex;align-items:center;gap:.8rem;font-size:.95rem;color:rgba(255,255,255,.75);">
-        <span style="font-size:1.2rem;">🌐</span>
-        <span>www.pizzeriapeperonikamp-bornhofen.de</span>
       </div>
     </div>
   </div>
@@ -1103,7 +1046,7 @@
   <h2>Hunger bekommen?<br />Wir freuen uns auf Sie!</h2>
   <p>Besuchen Sie uns direkt in Kamp-Bornhofen – oder schauen Sie in unsere vollständige Speisekarte.</p>
   <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
-    <a href="https://www.pizzeriapeperonikamp-bornhofen.de/" target="_blank" rel="noopener" class="btn btn-outline" style="color:#fff;border-color:rgba(255,255,255,.7);">
+    <a href="#menu" rel="noopener" class="btn btn-outline" style="color:#fff;border-color:rgba(255,255,255,.7);">
       Vollständige Speisekarte
     </a>
     <a href="https://maps.google.com/?q=Rheinuferstraße+44,+56341+Kamp-Bornhofen" target="_blank" rel="noopener" class="btn" style="background:rgba(255,255,255,.15);color:#fff;border:none;">
@@ -1116,7 +1059,9 @@
 <footer>
   <div class="footer-grid">
     <div class="footer-brand">
-      <span class="nav-logo">Bistro <span>Pepperoni</span></span>
+      <a href="#home" class="nav-logo">
+        <img src="pepperoni-logo.png" alt="Bistro Pizzeria Pepperoni" />
+      </a>
       <p>Authentische Küche aus Leidenschaft – direkt am malerischen Rheinufer in Kamp-Bornhofen.</p>
     </div>
     <div class="footer-col">
@@ -1135,7 +1080,6 @@
         <li><a href="#about">Über uns</a></li>
         <li><a href="#location">Öffnungszeiten</a></li>
         <li><a href="#location">Kontakt & Lage</a></li>
-        <li><a href="https://www.pizzeriapeperonikamp-bornhofen.de/" target="_blank" rel="noopener">Originalwebseite</a></li>
       </ul>
     </div>
   </div>
@@ -1157,21 +1101,232 @@
 <div id="google_translate_element"></div>
 
 <script>
-  // Scroll reveal
-  const reveals = document.querySelectorAll('.reveal');
+  // Scroll reveal — threshold:0 + rootMargin fires the moment any edge enters the viewport
   const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.12 });
-  reveals.forEach(el => io.observe(el));
-
-  // Menu tabs (visual only — filter by category)
-  const tabs = document.querySelectorAll('.tab');
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      tabs.forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        io.unobserve(e.target); // stop watching once revealed
+      }
     });
-  });
+  }, { threshold: 0, rootMargin: '0px 0px -60px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // ── Menu: load from menu.json, render tabs + cards, filter on click ──
+  const CATEGORY_EMOJI = {
+    'salads':                  '🥗',
+    'pizza':                   '🍕',
+    'party pizza':             '🎉',
+    'calzone':                 '🫕',
+    'cheese snails':           '🧀',
+    'doner specialties':       '🥙',
+    'pasta':                   '🍝',
+    'pasta al forno':          '🍲',
+    'pastry boats - pide':     '🛶',
+    'turkey schnitzel':        '🥩',
+    'side dishes':             '🍟',
+    'non-alcoholic beverages': '🥤',
+  };
+
+  function categoryEmoji(cat) {
+    return CATEGORY_EMOJI[cat.toLowerCase()] || '🍽️';
+  }
+
+  // Keyword → emoji rules, checked in order against "name + description" (lowercase)
+  const ITEM_EMOJI_RULES = [
+    // Seafood first (most specific)
+    [['shrimp', 'scampi', 'gamberi'],                          '🦐'],
+    [['salmon', 'lachs'],                                      '🐟'],
+    [['tuna', 'tonno'],                                        '🐠'],
+    [['seafood', 'frutti di mare'],                            '🦑'],
+    [['anchov'],                                               '🐟'],
+    // Meat
+    [['chicken nugget'],                                       '🍗'],
+    [['wiener schnitzel'],                                     '🥩'],
+    [['hunter', 'jäger'],                                      '🍄'],
+    [['hawaiian schnitzel', 'schnitzel hawaii'],               '🍍'],
+    [['schnitzel bolognese'],                                  '🥩'],
+    [['cream schnitzel', 'rahm'],                              '🫙'],
+    [['paprika schnitzel'],                                    '🫑'],
+    [['schnitzel'],                                            '🥩'],
+    // Doner / rotisserie
+    [['doner calzone', 'döner calzone'],                       '🥙'],
+    [['turkish pizza', 'lahmacun'],                            '🫓'],
+    [['rotisserie', 'drehspieß', 'doner', 'döner'],            '🥙'],
+    // Party
+    [['party pizza'],                                          '🎉'],
+    // Pizza variants
+    [['pizza diavolo'],                                        '🌶️'],
+    [['pizza lupo'],                                           '🐺'],
+    [['pizza caesar'],                                         '🐟'],
+    [['pizza frutti'],                                         '🦑'],
+    [['pizza spaghetti'],                                      '🍝'],
+    [['pizza vegetar'],                                        '🥦'],
+    [['pizza mozzarella'],                                     '🧀'],
+    [['spinach pizza', 'spinat pizza'],                        '🥬'],
+    [['hawaiian pizza', 'pizza hawaii'],                       '🍍'],
+    [['scampi pizza'],                                         '🦐'],
+    [['salmon pizza', 'lachs pizza'],                          '🐟'],
+    [['pepperoni pizza'],                                      '🌶️'],
+    [['pizza tonno'],                                          '🐠'],
+    [['pizza salami', 'pizza prosciutto', 'pizza funghi prosciutto'], '🥩'],
+    [['pizza funghi'],                                         '🍄'],
+    [['pizza quattro stagioni'],                               '🌿'],
+    [['pizza fantasia'],                                       '🎨'],
+    [['pizza mexico'],                                         '🌮'],
+    [['pizza margherita'],                                     '🍕'],
+    [['pizza italia'],                                         '🇮🇹'],
+    // Calzone
+    [['calzone vegetar'],                                      '🥦'],
+    [['calzone quattro', 'quattro fromaggi', 'four types of cheese', 'four cheese'], '🧀'],
+    [['calzone special'],                                      '🫕'],
+    // Pide
+    [['pide salmon'],                                          '🐟'],
+    [['pide hawaii'],                                          '🍍'],
+    [['pide mozzarella'],                                      '🧀'],
+    [['pide quattro', 'quattro fromaggi'],                     '🧀'],
+    [['pide vegetale'],                                        '🥦'],
+    [['spinach pide'],                                         '🥬'],
+    [['pide bologna', 'bolognese'],                            '🥩'],
+    [['pide cheese', 'soft cheese'],                           '🧀'],
+    [['pide döner', 'pide doner'],                             '🥙'],
+    [['pide pepperoni'],                                       '🌶️'],
+    // Pasta
+    [['gorgonzola'],                                           '🧀'],
+    [['pasta verde', 'broccoli'],                              '🥦'],
+    [['pasta arrabiata', 'pasta diavolo', 'spicy tomato', 'jalapeno'], '🌶️'],
+    [['spaghetti tonno', 'penne tonno'],                       '🐠'],
+    [['tortellini mare'],                                      '🦐'],
+    [['bolognese', 'ground beef'],                             '🥩'],
+    [['panna', 'cream sauce'],                                 '🫙'],
+    [['tortellini'],                                           '🍝'],
+    [['combination', 'drei'],                                  '🍲'],
+    [['spaghetti'],                                            '🍝'],
+    [['penne'],                                                '🍝'],
+    [['pasta'],                                                '🍝'],
+    // Salads
+    [['sailor', 'shrimp', 'tuna', 'seafood'],                  '🦐'],
+    [['mexico', 'mexican'],                                    '🌮'],
+    [['hawaii', 'pineapple'],                                  '🍍'],
+    [['chef salad'],                                           '👨‍🍳'],
+    [['marlen', 'mushroom'],                                   '🍄'],
+    [['roma', 'artichoke', 'olive'],                           '🫒'],
+    [['selina', 'feta'],                                       '🧀'],
+    [['coleslaw', 'white cabbage'],                            '🥬'],
+    [['salad'],                                                '🥗'],
+    // Sides & snacks
+    [['french fries', 'fries', 'pommes'],                      '🍟'],
+    [['cheese snail'],                                         '🧀'],
+    [['salad roll', 'salad rolls'],                            '🥗'],
+    [['bread roll', 'bread rolls', 'brötchen'],                '🫓'],
+    [['rotisserie roll', 'rotisserie bag', 'rotisserie plate'], '🥙'],
+    [['rotisserie salad'],                                     '🥗'],
+    // Beverages
+    [['iced tea', 'eistee'],                                   '🧋'],
+    [['ayran'],                                                '🥛'],
+    [['water', 'wasser'],                                      '💧'],
+    [['red bull'],                                             '⚡'],
+    [['fanta'],                                                '🍊'],
+    [['sprite'],                                               '🍋'],
+    [['coca-cola zero', 'coke zero'],                          '🫧'],
+    [['coca-cola', 'coke'],                                    '🥤'],
+  ];
+
+  function itemEmoji(name, description) {
+    const hay = (name + ' ' + description).toLowerCase();
+    for (const [keywords, emoji] of ITEM_EMOJI_RULES) {
+      if (keywords.some(k => hay.includes(k))) return emoji;
+    }
+    return '🍽️';
+  }
+
+  function itemBadge(name) {
+    const n = name.toLowerCase();
+    if (n.includes('spicy'))       return '<span class="badge badge-spicy">Spicy</span>';
+    if (n.includes('vegetarian') || n.includes('vegetaria')) return '<span class="badge badge-veg">Vegetarisch</span>';
+    return '';
+  }
+
+  const PHONE = '+49 6773 1234'; // ← replace with the real number
+
+  function buildCard(item) {
+    return `
+      <div class="menu-card">
+        <span class="menu-card-emoji">${itemEmoji(item.name, item.description)}</span>
+        <h3>${item.name}</h3>
+        ${item.description ? `<p>${item.description}</p>` : '<p style="color:#bbb;font-style:italic;font-size:.82rem;">—</p>'}
+        <div class="menu-card-footer">
+          <span class="price">${item.price}</span>
+          ${itemBadge(item.name)}
+        </div>
+        <a href="tel:${PHONE.replace(/\s/g,'')}" class="order-btn">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.81a16 16 0 0 0 6.29 6.29l.95-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+          </svg>
+          Jetzt bestellen
+        </a>
+      </div>`;
+  }
+
+  fetch('menu.json')
+    .then(r => r.json())
+    .then(data => {
+      const tabsEl = document.getElementById('menu-tabs');
+      const gridEl = document.getElementById('menu-grid');
+      const descEl = document.getElementById('menu-category-desc');
+
+      // Flatten items with category info attached
+      const allItems = [];
+      data.forEach(cat => {
+        const emoji = categoryEmoji(cat.category);
+        cat.items.forEach(item => {
+          allItems.push({ ...item, _cat: cat.category, _desc: cat.categoryDescription, _emoji: emoji });
+        });
+      });
+
+      // Build "All" tab + one tab per category
+      const categories = data.map(c => c.category);
+      const allTabs = ['All', ...categories];
+
+      function renderTabs(active) {
+        tabsEl.innerHTML = allTabs.map(cat => `
+          <button class="tab${cat === active ? ' active' : ''}" data-cat="${cat}">
+            ${cat === 'All' ? 'All' : categoryEmoji(cat) + ' ' + cat}
+          </button>`).join('');
+        // Re-attach listeners
+        tabsEl.querySelectorAll('.tab').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const chosen = btn.dataset.cat;
+            renderTabs(chosen);
+            renderCards(chosen);
+          });
+        });
+      }
+
+      function renderCards(active) {
+        const filtered = active === 'All'
+          ? allItems
+          : allItems.filter(i => i._cat === active);
+
+        // Category description
+        if (active === 'All') {
+          descEl.textContent = '';
+        } else {
+          const cat = data.find(c => c.category === active);
+          descEl.textContent = cat?.categoryDescription || '';
+        }
+
+        gridEl.innerHTML = filtered.map(buildCard).join('');
+      }
+
+      renderTabs('All');
+      renderCards('All');
+    })
+    .catch(() => {
+      document.getElementById('menu-grid').innerHTML =
+        '<p style="color:#999;grid-column:1/-1;text-align:center;">Speisekarte konnte nicht geladen werden.</p>';
+    });
 
   // Nav shrink on scroll
   const nav = document.querySelector('nav');
