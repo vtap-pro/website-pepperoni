@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bistro Pizzeria Pepperoni – Kamp-Bornhofen</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red:       #c0392b;
+      --red-dark:  #96281b;
+      --orange:    #e67e22;
+      --cream:     #fdf6ec;
+      --warm-white:#fffaf4;
+      --charcoal:  #1a1a1a;
+      --brown:     #5d3a1a;
+      --gold:      #d4a843;
+      --shadow:    0 4px 24px rgba(0,0,0,.14);
+      --radius:    14px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--warm-white);
+      color: var(--charcoal);
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ──────────────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 7vw;
+      height: 72px;
+      background: rgba(26,26,26,.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      transition: background .3s;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      color: #fff;
+      letter-spacing: .02em;
+    }
+    .nav-logo span { color: var(--orange); }
+    .nav-links { display: flex; gap: 2.2rem; list-style: none; }
+    .nav-links a {
+      color: rgba(255,255,255,.78);
+      text-decoration: none;
+      font-size: .9rem;
+      font-weight: 500;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--orange); }
+    .nav-cta {
+      background: var(--red);
+      color: #fff !important;
+      padding: .45rem 1.2rem;
+      border-radius: 6px;
+      transition: background .2s !important;
+    }
+    .nav-cta:hover { background: var(--red-dark) !important; color: #fff !important; }
+
+    /* ─── LANGUAGE TOGGLE ──────────────────────────────────────── */
+    .lang-toggle {
+      display: flex; align-items: center;
+      gap: 0;
+      border: 1.5px solid rgba(255,255,255,.22);
+      border-radius: 7px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .lang-btn {
+      background: transparent;
+      color: rgba(255,255,255,.55);
+      border: none;
+      padding: .3rem .72rem;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      transition: background .18s, color .18s;
+      line-height: 1;
+    }
+    .lang-btn.active {
+      background: var(--orange);
+      color: #fff;
+    }
+    .lang-btn:not(.active):hover {
+      background: rgba(255,255,255,.1);
+      color: #fff;
+    }
+    .lang-divider {
+      width: 1px; height: 18px;
+      background: rgba(255,255,255,.18);
+      flex-shrink: 0;
+    }
+    /* Footer variant */
+    .lang-toggle-footer {
+      display: flex; align-items: center; gap: .5rem;
+    }
+    .lang-toggle-footer .lang-toggle {
+      border-color: rgba(255,255,255,.15);
+    }
+    .lang-toggle-footer .lang-btn {
+      color: rgba(255,255,255,.4);
+    }
+    .lang-toggle-footer .lang-btn.active {
+      background: var(--red);
+      color: #fff;
+    }
+    /* Hide Google Translate toolbar completely */
+    .goog-te-banner-frame,
+    .goog-te-banner-frame.skiptranslate,
+    .skiptranslate > iframe,
+    .goog-te-gadget,
+    #google_translate_element { display: none !important; }
+    /* Google injects inline top offset on body — neutralise it */
+    body { top: 0 !important; position: static !important; }
+    .goog-tooltip, .goog-tooltip:hover { display: none !important; }
+    .goog-text-highlight { background: none !important; box-shadow: none !important; }
+    #goog-gt-tt, #goog-gt-tt * { display: none !important; visibility: hidden !important; }
+
+    /* ─── HERO ─────────────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 60%, rgba(192,57,43,.28) 0%, transparent 70%),
+        radial-gradient(ellipse 100% 100% at 80% 20%, rgba(230,126,34,.18) 0%, transparent 60%),
+        linear-gradient(160deg, #0e0a06 0%, #1c1208 40%, #2a1a0a 100%);
+    }
+    /* Decorative floating circles */
+    .hero-bg::before, .hero-bg::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      animation: float 8s ease-in-out infinite alternate;
+    }
+    .hero-bg::before {
+      width: 500px; height: 500px;
+      background: rgba(192,57,43,.22);
+      top: -100px; right: -100px;
+    }
+    .hero-bg::after {
+      width: 380px; height: 380px;
+      background: rgba(230,126,34,.18);
+      bottom: -80px; left: -60px;
+      animation-delay: -4s;
+    }
+    @keyframes float {
+      from { transform: translate(0,0) scale(1); }
+      to   { transform: translate(30px, -30px) scale(1.08); }
+    }
+
+    /* Pizza illustration using CSS */
+    .pizza-art {
+      position: absolute;
+      right: 8vw; top: 50%;
+      transform: translateY(-50%);
+      width: min(340px, 38vw);
+      aspect-ratio: 1;
+      animation: spin-slow 60s linear infinite;
+    }
+    @keyframes spin-slow { to { transform: translateY(-50%) rotate(360deg); } }
+
+    .hero-content {
+      position: relative; z-index: 2;
+      max-width: 680px;
+      padding: 0 2rem;
+      animation: fadeUp .9s ease both;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero-tag {
+      display: inline-block;
+      background: rgba(212,168,67,.15);
+      border: 1px solid rgba(212,168,67,.45);
+      color: var(--gold);
+      font-size: .78rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: .35rem 1rem;
+      border-radius: 100px;
+      margin-bottom: 1.4rem;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 7vw, 5.2rem);
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.08;
+      margin-bottom: 1.2rem;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--orange);
+    }
+    .hero p {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,.68);
+      line-height: 1.7;
+      margin-bottom: 2.4rem;
+      font-weight: 300;
+    }
+    .hero-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: .5rem;
+      padding: .85rem 2rem;
+      border-radius: 8px;
+      font-size: .95rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform .2s, box-shadow .2s;
+      cursor: pointer;
+      border: none;
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,.22); }
+    .btn-primary { background: var(--red); color: #fff; }
+    .btn-primary:hover { background: var(--red-dark); }
+    .btn-outline {
+      background: transparent;
+      color: #fff;
+      border: 1.5px solid rgba(255,255,255,.4);
+    }
+    .btn-outline:hover { border-color: var(--orange); color: var(--orange); }
+
+    .hero-scroll {
+      position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+      color: rgba(255,255,255,.4);
+      font-size: .78rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      display: flex; flex-direction: column; align-items: center; gap: .5rem;
+      animation: fadeUp 1.2s .6s ease both;
+    }
+    .scroll-line {
+      width: 1px; height: 40px;
+      background: linear-gradient(to bottom, rgba(255,255,255,.4), transparent);
+      animation: scroll-drop 2s ease-in-out infinite;
+    }
+    @keyframes scroll-drop {
+      0%, 100% { opacity: .4; transform: scaleY(1); }
+      50%       { opacity: 1;  transform: scaleY(1.3); }
+    }
+
+    /* ─── STRIPE ───────────────────────────────────────────────── */
+    .stripe {
+      background: var(--red);
+      color: #fff;
+      padding: .9rem 0;
+      overflow: hidden;
+    }
+    .stripe-inner {
+      display: flex;
+      gap: 4rem;
+      animation: marquee 25s linear infinite;
+      white-space: nowrap;
+    }
+    .stripe-item {
+      display: flex; align-items: center; gap: .6rem;
+      font-size: .85rem; font-weight: 500; letter-spacing: .05em;
+      text-transform: uppercase;
+    }
+    .stripe-dot { width: 6px; height: 6px; background: rgba(255,255,255,.5); border-radius: 50%; }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ─── SECTION UTILITY ──────────────────────────────────────── */
+    section { padding: 6rem 7vw; }
+    .section-label {
+      display: inline-block;
+      color: var(--red);
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      margin-bottom: .8rem;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      color: var(--charcoal);
+      line-height: 1.18;
+      margin-bottom: 1rem;
+    }
+    .section-sub {
+      font-size: 1.05rem;
+      color: #666;
+      line-height: 1.7;
+      max-width: 520px;
+    }
+
+    /* ─── ABOUT ────────────────────────────────────────────────── */
+    .about {
+      background: var(--cream);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5vw;
+      align-items: center;
+    }
+    .about-visual {
+      position: relative;
+    }
+    .about-card {
+      background: var(--charcoal);
+      border-radius: var(--radius);
+      overflow: hidden;
+      aspect-ratio: 4/5;
+      display: flex; align-items: center; justify-content: center;
+    }
+    /* SVG pizza visual */
+    .about-card svg { width: 72%; filter: drop-shadow(0 8px 30px rgba(192,57,43,.5)); }
+
+    .about-badge {
+      position: absolute;
+      bottom: -1.5rem; right: -1.5rem;
+      background: var(--red);
+      color: #fff;
+      border-radius: var(--radius);
+      padding: 1.4rem;
+      box-shadow: var(--shadow);
+      text-align: center;
+      min-width: 130px;
+    }
+    .about-badge strong {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 900;
+      line-height: 1;
+    }
+    .about-badge span { font-size: .78rem; opacity: .85; }
+
+    .about-text { padding-left: 1rem; }
+    .about-text .section-sub { max-width: 100%; margin-bottom: 2.5rem; }
+    .about-features { display: flex; flex-direction: column; gap: 1.2rem; }
+    .feature {
+      display: flex; align-items: flex-start; gap: 1rem;
+    }
+    .feature-icon {
+      width: 44px; height: 44px; flex-shrink: 0;
+      background: rgba(192,57,43,.1);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.25rem;
+    }
+    .feature-text strong { display: block; font-size: .95rem; margin-bottom: .2rem; }
+    .feature-text span { font-size: .85rem; color: #777; }
+
+    /* ─── MENU ─────────────────────────────────────────────────── */
+    .menu { background: var(--warm-white); }
+    .menu-header {
+      display: flex; justify-content: space-between; align-items: flex-end;
+      flex-wrap: wrap; gap: 1.5rem;
+      margin-bottom: 3.5rem;
+    }
+    .menu-tabs {
+      display: flex; gap: .6rem; flex-wrap: wrap;
+    }
+    .tab {
+      padding: .5rem 1.2rem;
+      border-radius: 100px;
+      border: 1.5px solid #e0e0e0;
+      background: transparent;
+      color: #666;
+      font-size: .85rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all .2s;
+      font-family: 'Inter', sans-serif;
+    }
+    .tab.active, .tab:hover {
+      background: var(--red);
+      border-color: var(--red);
+      color: #fff;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.6rem;
+    }
+    .menu-card {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 1.6rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,.07);
+      border: 1px solid rgba(0,0,0,.06);
+      transition: transform .25s, box-shadow .25s;
+      position: relative;
+      overflow: hidden;
+    }
+    .menu-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--red), var(--orange));
+      transform: scaleX(0);
+      transition: transform .3s;
+    }
+    .menu-card:hover { transform: translateY(-4px); box-shadow: 0 10px 36px rgba(0,0,0,.12); }
+    .menu-card:hover::before { transform: scaleX(1); }
+    .menu-card-emoji { font-size: 2.2rem; margin-bottom: .9rem; display: block; }
+    .menu-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      margin-bottom: .4rem;
+    }
+    .menu-card p {
+      font-size: .85rem;
+      color: #777;
+      line-height: 1.5;
+      margin-bottom: 1.2rem;
+    }
+    .menu-card-footer {
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .price {
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--red);
+    }
+    .badge {
+      font-size: .7rem;
+      font-weight: 600;
+      padding: .25rem .7rem;
+      border-radius: 100px;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+    .badge-spicy { background: rgba(192,57,43,.12); color: var(--red); }
+    .badge-popular { background: rgba(230,126,34,.15); color: var(--orange); }
+    .badge-veg { background: rgba(39,174,96,.12); color: #27ae60; }
+
+    /* ─── LOCATION / HOURS ─────────────────────────────────────── */
+    .location {
+      background: var(--charcoal);
+      color: #fff;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5vw;
+      align-items: center;
+    }
+    .location .section-title { color: #fff; }
+    .location .section-label { color: var(--orange); }
+    .location .section-sub { color: rgba(255,255,255,.6); }
+    .hours-list { margin-top: 2.5rem; }
+    .hours-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: .9rem 0;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      font-size: .95rem;
+    }
+    .hours-row:last-child { border-bottom: none; }
+    .hours-row .day { color: rgba(255,255,255,.7); }
+    .hours-row .time { font-weight: 600; color: #fff; }
+    .hours-row .open-badge {
+      font-size: .7rem;
+      background: rgba(39,174,96,.2);
+      color: #2ecc71;
+      padding: .2rem .6rem;
+      border-radius: 100px;
+      font-weight: 600;
+    }
+    .map-card {
+      border-radius: var(--radius);
+      overflow: hidden;
+      aspect-ratio: 4/5;
+      background: #2a2a2a;
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+    }
+    .map-embed {
+      width: 100%; height: 100%;
+      border: none;
+      filter: grayscale(20%) contrast(1.1);
+      border-radius: var(--radius);
+    }
+    .map-pin {
+      position: absolute;
+      background: var(--red);
+      color: #fff;
+      padding: .8rem 1.2rem;
+      border-radius: var(--radius);
+      font-size: .85rem;
+      font-weight: 600;
+      box-shadow: var(--shadow);
+      bottom: 1.5rem; left: 50%; transform: translateX(-50%);
+      white-space: nowrap;
+      display: flex; align-items: center; gap: .5rem;
+    }
+
+    /* ─── GALLERY STRIP ────────────────────────────────────────── */
+    .gallery {
+      background: var(--cream);
+      padding-bottom: 2rem;
+    }
+    .gallery .section-title { margin-bottom: 2.5rem; }
+    .gallery-row {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.5fr;
+      grid-template-rows: 220px 220px;
+      gap: 1rem;
+    }
+    .gallery-cell {
+      border-radius: var(--radius);
+      overflow: hidden;
+      position: relative;
+      background: var(--charcoal);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .gallery-cell:first-child { grid-row: 1 / 3; }
+    .gallery-cell:last-child  { grid-row: 1 / 3; }
+    .gallery-cell .gfill {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: clamp(3rem, 6vw, 5rem);
+      transition: transform .4s;
+    }
+    .gallery-cell:hover .gfill { transform: scale(1.08); }
+    .g1 { background: linear-gradient(135deg, #2c1a0a, #4a2e12); }
+    .g2 { background: linear-gradient(135deg, #1a0a0a, #3d1515); }
+    .g3 { background: linear-gradient(135deg, #0a1a0a, #153d15); }
+    .g4 { background: linear-gradient(135deg, #1a150a, #3d3015); }
+    .g5 { background: linear-gradient(135deg, #0a0a1a, #15153d); }
+    .gallery-cell .glabel {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 1rem;
+      background: linear-gradient(to top, rgba(0,0,0,.7), transparent);
+      color: #fff;
+      font-size: .82rem;
+      font-weight: 600;
+      transform: translateY(100%);
+      transition: transform .3s;
+    }
+    .gallery-cell:hover .glabel { transform: translateY(0); }
+
+    /* ─── TESTIMONIALS ─────────────────────────────────────────── */
+    .testimonials { background: var(--warm-white); }
+    .testimonials .section-title { margin-bottom: 3rem; }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.6rem;
+    }
+    .review-card {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 2rem;
+      box-shadow: 0 2px 14px rgba(0,0,0,.07);
+      border: 1px solid rgba(0,0,0,.06);
+    }
+    .stars { color: var(--gold); font-size: 1rem; margin-bottom: 1rem; letter-spacing: .05em; }
+    .review-card p {
+      font-size: .92rem;
+      color: #555;
+      line-height: 1.65;
+      margin-bottom: 1.4rem;
+      font-style: italic;
+    }
+    .reviewer {
+      display: flex; align-items: center; gap: .8rem;
+    }
+    .reviewer-avatar {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--red);
+      color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: .9rem;
+    }
+    .reviewer-name { font-weight: 600; font-size: .9rem; }
+    .reviewer-date { font-size: .78rem; color: #aaa; }
+
+    /* ─── CTA BANNER ───────────────────────────────────────────── */
+    .cta-banner {
+      background: linear-gradient(135deg, var(--red-dark) 0%, var(--red) 50%, var(--orange) 100%);
+      padding: 6rem 7vw;
+      text-align: center;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-banner::before {
+      content: '🍕';
+      position: absolute;
+      font-size: 20rem;
+      opacity: .06;
+      top: 50%; left: 5%;
+      transform: translateY(-50%) rotate(-15deg);
+      pointer-events: none;
+    }
+    .cta-banner::after {
+      content: '🍕';
+      position: absolute;
+      font-size: 16rem;
+      opacity: .05;
+      top: 50%; right: 3%;
+      transform: translateY(-50%) rotate(20deg);
+      pointer-events: none;
+    }
+    .cta-banner h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      font-weight: 900;
+      margin-bottom: 1rem;
+    }
+    .cta-banner p {
+      font-size: 1.1rem;
+      opacity: .85;
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+    }
+    .cta-banner .btn-outline {
+      border-color: rgba(255,255,255,.7);
+      font-size: 1rem;
+    }
+
+    /* ─── FOOTER ───────────────────────────────────────────────── */
+    footer {
+      background: #111;
+      color: rgba(255,255,255,.6);
+      padding: 4rem 7vw 2rem;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 4vw;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      margin-bottom: 2rem;
+    }
+    .footer-brand .nav-logo { font-size: 1.5rem; margin-bottom: 1rem; display: block; }
+    .footer-brand p { font-size: .88rem; line-height: 1.7; max-width: 260px; }
+    .footer-col h4 {
+      color: #fff;
+      font-size: .85rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: .7rem; }
+    .footer-col a {
+      color: rgba(255,255,255,.55);
+      text-decoration: none;
+      font-size: .88rem;
+      transition: color .2s;
+    }
+    .footer-col a:hover { color: var(--orange); }
+    .footer-bottom {
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: .8rem;
+      color: rgba(255,255,255,.3);
+      flex-wrap: wrap; gap: .5rem;
+    }
+
+    /* ─── SCROLL REVEAL ────────────────────────────────────────── */
+    .reveal {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .reveal.visible {
+      opacity: 1; transform: translateY(0);
+    }
+
+    /* ─── RESPONSIVE ───────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .about, .location { grid-template-columns: 1fr; }
+      .about-badge { right: 1rem; }
+      .pizza-art { display: none; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-row {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(4, 180px);
+      }
+      .gallery-cell:first-child,
+      .gallery-cell:last-child { grid-row: auto; }
+    }
+    @media (max-width: 600px) {
+      nav { padding: 0 1.4rem; }
+      .nav-links { display: none; }
+      section { padding: 4rem 5vw; }
+      .hero h1 { font-size: 2.6rem; }
+      .gallery-row { grid-template-columns: 1fr; grid-template-rows: repeat(5, 180px); }
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── NAV ──────────────────────────────────────────────────── -->
+<nav>
+  <span class="nav-logo">Bistro <span>Pepperoni</span></span>
+  <ul class="nav-links">
+    <li><a href="#about">Über uns</a></li>
+    <li><a href="#menu">Speisekarte</a></li>
+    <li><a href="#location">Standort</a></li>
+    <li><a href="#contact" class="nav-cta">Kontakt</a></li>
+  </ul>
+  <div class="lang-toggle" role="group" aria-label="Language">
+    <button class="lang-btn active" data-lang="de" onclick="setLang('de')">DE</button>
+    <div class="lang-divider"></div>
+    <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+  </div>
+</nav>
+
+<!-- ─── HERO ─────────────────────────────────────────────────── -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+
+  <!-- Decorative pizza SVG -->
+  <svg class="pizza-art" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <!-- Crust -->
+    <circle cx="200" cy="200" r="185" fill="#c0392b" opacity=".18"/>
+    <circle cx="200" cy="200" r="182" fill="none" stroke="#e67e22" stroke-width="22" opacity=".3"/>
+    <!-- Base -->
+    <circle cx="200" cy="200" r="160" fill="#d4a843" opacity=".25"/>
+    <!-- Sauce -->
+    <circle cx="200" cy="200" r="148" fill="#c0392b" opacity=".35"/>
+    <!-- Cheese -->
+    <ellipse cx="190" cy="195" rx="110" ry="105" fill="#fef9c3" opacity=".22"/>
+    <!-- Toppings -->
+    <circle cx="200" cy="145" r="16" fill="#c0392b" opacity=".7"/>
+    <circle cx="155" cy="175" r="12" fill="#c0392b" opacity=".6"/>
+    <circle cx="245" cy="175" r="14" fill="#c0392b" opacity=".65"/>
+    <circle cx="165" cy="225" r="11" fill="#c0392b" opacity=".6"/>
+    <circle cx="235" cy="230" r="13" fill="#c0392b" opacity=".65"/>
+    <circle cx="200" cy="245" r="15" fill="#c0392b" opacity=".7"/>
+    <!-- Basil leaves -->
+    <ellipse cx="220" cy="160" rx="14" ry="7" fill="#27ae60" opacity=".6" transform="rotate(-30 220 160)"/>
+    <ellipse cx="175" cy="205" rx="12" ry="6" fill="#27ae60" opacity=".55" transform="rotate(20 175 205)"/>
+    <ellipse cx="215" cy="215" rx="13" ry="6" fill="#27ae60" opacity=".6" transform="rotate(-15 215 215)"/>
+    <!-- Shine -->
+    <ellipse cx="155" cy="145" rx="30" ry="18" fill="white" opacity=".06" transform="rotate(-25 155 145)"/>
+  </svg>
+
+  <div class="hero-content">
+    <div class="hero-tag">🍕 Kamp-Bornhofen am Rhein</div>
+    <h1>Authentische<br /><em>Italienische</em><br />Küche</h1>
+    <p>Handgemachte Pizzen, frische Pasta und herzhafte Döner-Spezialitäten – mit Liebe zubereitet direkt am malerischen Rheinufer.</p>
+    <div class="hero-buttons">
+      <a href="#menu" class="btn btn-primary">Speisekarte ansehen</a>
+      <a href="#location" class="btn btn-outline">Uns finden</a>
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    <span>Scrollen</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ─── STRIPE ───────────────────────────────────────────────── -->
+<div class="stripe">
+  <div class="stripe-inner" aria-hidden="true">
+    <!-- duplicated for seamless loop -->
+    <span class="stripe-item"><span class="stripe-dot"></span> Frische Zutaten täglich</span>
+    <span class="stripe-item"><span class="stripe-dot"></span> Hausgemachter Teig</span>
+    <span class="stripe-item"><span class="stripe-dot"></span> Traditionelle Rezepte</span>
+    <span class="stripe-item"><span class="stripe-dot"></span> Vegetarische Optionen</span>
+    <span class="stripe-item"><span class="stripe-dot"></span> Rheinufer Lage</span>
+    <span class="stripe-item"><span class="stripe-dot"></span> Herzliche Atmosphäre</span>
+    <span class="stripe-item"><span class="stripe-dot"></span> Frische Zutaten täglich</span>
+    <span class="stripe-item"><span class="stripe-dot"></span> Hausgemachter Teig</span>
+    <span class="stripe-item"><span class="stripe-dot"></span> Traditionelle Rezepte</span>
+    <span class="stripe-item"><span class="stripe-dot"></span> Vegetarische Optionen</span>
+    <span class="stripe-item"><span class="stripe-dot"></span> Rheinufer Lage</span>
+    <span class="stripe-item"><span class="stripe-dot"></span> Herzliche Atmosphäre</span>
+  </div>
+</div>
+
+<!-- ─── ABOUT ────────────────────────────────────────────────── -->
+<section class="about reveal" id="about">
+  <div class="about-visual">
+    <div class="about-card">
+      <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- Plate -->
+        <circle cx="150" cy="150" r="130" fill="#3d2a10" opacity=".6"/>
+        <circle cx="150" cy="150" r="125" fill="none" stroke="#e67e22" stroke-width="6" opacity=".3"/>
+        <!-- Pizza base -->
+        <circle cx="150" cy="150" r="108" fill="#d4a843" opacity=".5"/>
+        <!-- Sauce -->
+        <circle cx="150" cy="150" r="97" fill="#c0392b" opacity=".7"/>
+        <!-- Cheese layer -->
+        <ellipse cx="145" cy="148" rx="74" ry="70" fill="#fef9c3" opacity=".55"/>
+        <!-- Toppings peperoni -->
+        <circle cx="150" cy="104" r="13" fill="#8b0000" opacity=".9"/>
+        <circle cx="150" cy="104" r="9"  fill="#c0392b" opacity=".9"/>
+        <circle cx="110" cy="130" r="11" fill="#8b0000" opacity=".85"/>
+        <circle cx="110" cy="130" r="7.5" fill="#c0392b" opacity=".9"/>
+        <circle cx="190" cy="130" r="12" fill="#8b0000" opacity=".85"/>
+        <circle cx="190" cy="130" r="8" fill="#c0392b" opacity=".9"/>
+        <circle cx="118" cy="170" r="10" fill="#8b0000" opacity=".85"/>
+        <circle cx="118" cy="170" r="7" fill="#c0392b" opacity=".9"/>
+        <circle cx="182" cy="174" r="11" fill="#8b0000" opacity=".85"/>
+        <circle cx="182" cy="174" r="7.5" fill="#c0392b" opacity=".9"/>
+        <circle cx="150" cy="188" r="12" fill="#8b0000" opacity=".85"/>
+        <circle cx="150" cy="188" r="8" fill="#c0392b" opacity=".9"/>
+        <!-- Basil -->
+        <ellipse cx="168" cy="118" rx="11" ry="5" fill="#27ae60" opacity=".8" transform="rotate(-20 168 118)"/>
+        <ellipse cx="128" cy="155" rx="10" ry="5" fill="#27ae60" opacity=".75" transform="rotate(15 128 155)"/>
+        <ellipse cx="163" cy="163" rx="10" ry="5" fill="#27ae60" opacity=".8" transform="rotate(-10 163 163)"/>
+        <!-- Slice cut lines -->
+        <line x1="150" y1="42" x2="150" y2="258" stroke="rgba(0,0,0,.25)" stroke-width="1.5"/>
+        <line x1="62" y1="96" x2="238" y2="204" stroke="rgba(0,0,0,.2)" stroke-width="1.5"/>
+        <line x1="62" y1="204" x2="238" y2="96" stroke="rgba(0,0,0,.2)" stroke-width="1.5"/>
+        <!-- Shine -->
+        <ellipse cx="115" cy="108" rx="22" ry="13" fill="white" opacity=".08" transform="rotate(-30 115 108)"/>
+      </svg>
+    </div>
+    <div class="about-badge">
+      <strong>10+</strong>
+      <span>Jahre Tradition</span>
+    </div>
+  </div>
+
+  <div class="about-text">
+    <span class="section-label">Unsere Geschichte</span>
+    <h2 class="section-title">Leidenschaft<br />für echte Küche</h2>
+    <p class="section-sub">Willkommen im Bistro Pizzeria Pepperoni in Kamp-Bornhofen – wo jede Pizza mit Herz belegt wird. Seit Jahren verwöhnen wir unsere Gäste mit hausgemachten Gerichten direkt an der romantischen Rheinuferstraße.</p>
+    <div class="about-features">
+      <div class="feature">
+        <div class="feature-icon">🍅</div>
+        <div class="feature-text">
+          <strong>Frische Zutaten</strong>
+          <span>Täglich frisch – von der Tomate bis zur Basilikumblatt</span>
+        </div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">👨‍🍳</div>
+        <div class="feature-text">
+          <strong>Meisterhaftes Handwerk</strong>
+          <span>Teig von Hand geknetet nach traditionellem Rezept</span>
+        </div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🌊</div>
+        <div class="feature-text">
+          <strong>Rheinufer Lage</strong>
+          <span>Genießen Sie den Blick auf den Rhein beim Essen</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── MENU ─────────────────────────────────────────────────── -->
+<section class="menu reveal" id="menu">
+  <div class="menu-header">
+    <div>
+      <span class="section-label">Speisekarte</span>
+      <h2 class="section-title">Unsere Köstlichkeiten</h2>
+    </div>
+    <div class="menu-tabs">
+      <button class="tab active">Alle</button>
+      <button class="tab">Pizza</button>
+      <button class="tab">Pasta</button>
+      <button class="tab">Salate</button>
+      <button class="tab">Döner</button>
+    </div>
+  </div>
+
+  <div class="menu-grid">
+    <div class="menu-card">
+      <span class="menu-card-emoji">🍕</span>
+      <h3>Pizza Margherita</h3>
+      <p>Tomatensauce, Mozzarella und frisches Basilikum – der Klassiker schlechthin.</p>
+      <div class="menu-card-footer">
+        <span class="price">ab €6,50</span>
+        <span class="badge badge-veg">Vegetarisch</span>
+      </div>
+    </div>
+
+    <div class="menu-card">
+      <span class="menu-card-emoji">🌶️</span>
+      <h3>Pizza Diavolo</h3>
+      <p>Tomatensauce, Mozzarella, Peperoni-Salami und scharfe Paprika – feurig scharf.</p>
+      <div class="menu-card-footer">
+        <span class="price">ab €8,50</span>
+        <span class="badge badge-spicy">Scharf</span>
+      </div>
+    </div>
+
+    <div class="menu-card">
+      <span class="menu-card-emoji">🍍</span>
+      <h3>Pizza Hawaii</h3>
+      <p>Tomatensauce, Mozzarella, Schinken und Ananas – süß-herzhafter Genuss.</p>
+      <div class="menu-card-footer">
+        <span class="price">ab €8,00</span>
+        <span class="badge badge-popular">Beliebt</span>
+      </div>
+    </div>
+
+    <div class="menu-card">
+      <span class="menu-card-emoji">🥗</span>
+      <h3>Salat Festival</h3>
+      <p>Weißkohl, Zwiebeln, Ei, Peperoni-Wurst und Mais – bunt und frisch.</p>
+      <div class="menu-card-footer">
+        <span class="price">ab €7,00</span>
+        <span class="badge badge-popular">Beliebt</span>
+      </div>
+    </div>
+
+    <div class="menu-card">
+      <span class="menu-card-emoji">🍝</span>
+      <h3>Pasta Bolognese</h3>
+      <p>Al-dente Pasta mit reichhaltiger Hackfleischsauce nach Hausrezept.</p>
+      <div class="menu-card-footer">
+        <span class="price">ab €7,50</span>
+        <span class="badge badge-popular">Beliebt</span>
+      </div>
+    </div>
+
+    <div class="menu-card">
+      <span class="menu-card-emoji">🥙</span>
+      <h3>Drehspieß-Teller</h3>
+      <p>Rotisserie-Kalbfleisch mit Pommes frites und frischem Salat.</p>
+      <div class="menu-card-footer">
+        <span class="price">ab €9,00</span>
+        <span class="badge badge-popular">Spezialität</span>
+      </div>
+    </div>
+
+    <div class="menu-card">
+      <span class="menu-card-emoji">🥩</span>
+      <h3>Schnitzel</h3>
+      <p>Goldbraun paniertes Schnitzel mit Pommes frites und Salatbeilage.</p>
+      <div class="menu-card-footer">
+        <span class="price">ab €12,00</span>
+        <span class="badge badge-popular">Hausgemacht</span>
+      </div>
+    </div>
+
+    <div class="menu-card">
+      <span class="menu-card-emoji">🫕</span>
+      <h3>Calzone Quattro Formaggi</h3>
+      <p>Gefüllte Teigtasche mit vier edlen Käsesorten – cremig und herzhaft.</p>
+      <div class="menu-card-footer">
+        <span class="price">ab €9,00</span>
+        <span class="badge badge-veg">Vegetarisch</span>
+      </div>
+    </div>
+
+    <div class="menu-card">
+      <span class="menu-card-emoji">🍝</span>
+      <h3>Pasta Arrabiata</h3>
+      <p>Würzig-scharfe Tomatensauce mit Knoblauch und Chili – ein Feuerwerk.</p>
+      <div class="menu-card-footer">
+        <span class="price">ab €7,00</span>
+        <span class="badge badge-spicy">Scharf</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── GALLERY ───────────────────────────────────────────────── -->
+<section class="gallery reveal" id="gallery">
+  <span class="section-label">Galerie</span>
+  <h2 class="section-title">Eindrücke aus unserem Bistro</h2>
+  <div class="gallery-row">
+    <div class="gallery-cell">
+      <div class="gfill g1">🍕</div>
+      <div class="glabel">Unsere Signature Pizza</div>
+    </div>
+    <div class="gallery-cell">
+      <div class="gfill g2">🍝</div>
+      <div class="glabel">Hausgemachte Pasta</div>
+    </div>
+    <div class="gallery-cell">
+      <div class="gfill g3">🥗</div>
+      <div class="glabel">Frische Salate</div>
+    </div>
+    <div class="gallery-cell">
+      <div class="gfill g4">🌊</div>
+      <div class="glabel">Rheinufer Aussicht</div>
+    </div>
+    <div class="gallery-cell">
+      <div class="gfill g5">🥙</div>
+      <div class="glabel">Döner Spezialitäten</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── LOCATION ──────────────────────────────────────────────── -->
+<section class="location reveal" id="location">
+  <div>
+    <span class="section-label">Besuchen Sie uns</span>
+    <h2 class="section-title">Standort &<br />Öffnungszeiten</h2>
+    <p class="section-sub">Wir befinden uns direkt an der Rheinuferstraße in Kamp-Bornhofen – mit Blick auf das malerische Rheintal.</p>
+
+    <div class="hours-list">
+      <div class="hours-row">
+        <span class="day">Montag – Donnerstag</span>
+        <span class="time">11:30 – 22:00 Uhr <span class="open-badge">Geöffnet</span></span>
+      </div>
+      <div class="hours-row">
+        <span class="day">Freitag</span>
+        <span class="time">11:30 – 23:00 Uhr <span class="open-badge">Geöffnet</span></span>
+      </div>
+      <div class="hours-row">
+        <span class="day">Samstag</span>
+        <span class="time">12:00 – 23:00 Uhr <span class="open-badge">Geöffnet</span></span>
+      </div>
+      <div class="hours-row">
+        <span class="day">Sonntag</span>
+        <span class="time">12:00 – 21:30 Uhr <span class="open-badge">Geöffnet</span></span>
+      </div>
+    </div>
+
+    <div style="margin-top: 2.5rem; display: flex; flex-direction: column; gap: .9rem;">
+      <div style="display:flex;align-items:center;gap:.8rem;font-size:.95rem;color:rgba(255,255,255,.75);">
+        <span style="font-size:1.2rem;">📍</span>
+        <span>Rheinuferstraße 44, 56341 Kamp-Bornhofen</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:.8rem;font-size:.95rem;color:rgba(255,255,255,.75);">
+        <span style="font-size:1.2rem;">🌐</span>
+        <span>www.pizzeriapeperonikamp-bornhofen.de</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="map-card">
+    <iframe
+      class="map-embed"
+      src="https://www.openstreetmap.org/export/embed.html?bbox=7.64,50.22,7.68,50.25&layer=mapnik&marker=50.234,7.662"
+      title="Kamp-Bornhofen Karte"
+      loading="lazy"
+    ></iframe>
+    <div class="map-pin">
+      📍 Rheinuferstraße 44, Kamp-Bornhofen
+    </div>
+  </div>
+</section>
+
+<!-- ─── TESTIMONIALS ──────────────────────────────────────────── -->
+<section class="testimonials reveal" id="reviews">
+  <span class="section-label">Bewertungen</span>
+  <h2 class="section-title">Was unsere Gäste sagen</h2>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p>„Die beste Pizza am Rhein! Der Teig ist herrlich knusprig und die Zutaten schmecken absolut frisch. Ein Muss bei jedem Besuch in Kamp-Bornhofen."</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar">MK</div>
+        <div>
+          <div class="reviewer-name">Maria K.</div>
+          <div class="reviewer-date">März 2025</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p>„Tolle Lage direkt am Rhein, freundliches Personal und die Döner-Spezialitäten sind einfach unschlagbar. Werden definitiv wiederkommen!"</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar">TH</div>
+        <div>
+          <div class="reviewer-name">Thomas H.</div>
+          <div class="reviewer-date">Januar 2025</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★☆</div>
+      <p>„Wunderbare Atmosphäre, leckere Pasta Bolognese und faire Preise. Das Calzone war auch eine Offenbarung – innen schmelzend, außen goldbraun."</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar">SR</div>
+        <div>
+          <div class="reviewer-name">Sabine R.</div>
+          <div class="reviewer-date">Februar 2025</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CTA BANNER ────────────────────────────────────────────── -->
+<div class="cta-banner reveal" id="contact">
+  <h2>Hunger bekommen?<br />Wir freuen uns auf Sie!</h2>
+  <p>Besuchen Sie uns direkt in Kamp-Bornhofen – oder schauen Sie in unsere vollständige Speisekarte.</p>
+  <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+    <a href="https://www.pizzeriapeperonikamp-bornhofen.de/" target="_blank" rel="noopener" class="btn btn-outline" style="color:#fff;border-color:rgba(255,255,255,.7);">
+      Vollständige Speisekarte
+    </a>
+    <a href="https://maps.google.com/?q=Rheinuferstraße+44,+56341+Kamp-Bornhofen" target="_blank" rel="noopener" class="btn" style="background:rgba(255,255,255,.15);color:#fff;border:none;">
+      📍 Anfahrt
+    </a>
+  </div>
+</div>
+
+<!-- ─── FOOTER ────────────────────────────────────────────────── -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <span class="nav-logo">Bistro <span>Pepperoni</span></span>
+      <p>Authentische Küche aus Leidenschaft – direkt am malerischen Rheinufer in Kamp-Bornhofen.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Speisekarte</h4>
+      <ul>
+        <li><a href="#menu">Pizza</a></li>
+        <li><a href="#menu">Pasta</a></li>
+        <li><a href="#menu">Salate</a></li>
+        <li><a href="#menu">Döner</a></li>
+        <li><a href="#menu">Schnitzel</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Informationen</h4>
+      <ul>
+        <li><a href="#about">Über uns</a></li>
+        <li><a href="#location">Öffnungszeiten</a></li>
+        <li><a href="#location">Kontakt & Lage</a></li>
+        <li><a href="https://www.pizzeriapeperonikamp-bornhofen.de/" target="_blank" rel="noopener">Originalwebseite</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Bistro Pizzeria Pepperoni, Kamp-Bornhofen. Alle Rechte vorbehalten.</span>
+    <span>Rheinuferstraße 44 · 56341 Kamp-Bornhofen</span>
+    <div class="lang-toggle-footer">
+      <span style="font-size:.75rem;color:rgba(255,255,255,.25);letter-spacing:.06em;text-transform:uppercase;">Lang:</span>
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button class="lang-btn active" data-lang="de" onclick="setLang('de')">DE</button>
+        <div class="lang-divider"></div>
+        <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Google Translate hidden element -->
+<div id="google_translate_element"></div>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => io.observe(el));
+
+  // Menu tabs (visual only — filter by category)
+  const tabs = document.querySelectorAll('.tab');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+    });
+  });
+
+  // Nav shrink on scroll
+  const nav = document.querySelector('nav');
+  window.addEventListener('scroll', () => {
+    nav.style.background = window.scrollY > 60
+      ? 'rgba(26,26,26,.98)'
+      : 'rgba(26,26,26,.92)';
+  });
+</script>
+
+<!-- Google Translate API -->
+<script src="https://translate.google.com/translate_a/element.js?cb=initGoogleTranslate"></script>
+<script>
+  function initGoogleTranslate() {
+    new google.translate.TranslateElement(
+      { pageLanguage: 'de', includedLanguages: 'en,de', autoDisplay: false },
+      'google_translate_element'
+    );
+    // Restore saved language preference on page load
+    const saved = localStorage.getItem('pepperoni-lang') || 'de';
+    if (saved === 'en') {
+      // Short delay so the widget is ready
+      setTimeout(() => applyLang('en'), 800);
+    }
+  }
+
+  function setLang(lang) {
+    localStorage.setItem('pepperoni-lang', lang);
+    // Update all toggle buttons
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.lang === lang);
+    });
+    applyLang(lang);
+  }
+
+  function applyLang(lang) {
+    if (lang === 'de') {
+      // Google has no "untranslate" API — clear its cookie and reload to restore original
+      ['/', location.pathname].forEach(path => {
+        document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=${path}`;
+        document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=${path}; domain=${location.hostname}`;
+        document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=${path}; domain=.${location.hostname}`;
+      });
+      location.reload();
+      return;
+    }
+    // For EN: poll until the widget select is ready, then fire it
+    const tryTranslate = () => {
+      const select = document.querySelector('.goog-te-combo');
+      if (select) {
+        select.value = 'en';
+        select.dispatchEvent(new Event('change'));
+      } else {
+        setTimeout(tryTranslate, 150);
+      }
+    };
+    tryTranslate();
+  }
+
+  // Google injects `top: 40px` on <body> when its bar appears — strip it continuously
+  new MutationObserver(() => {
+    if (document.body.style.top && document.body.style.top !== '0px') {
+      document.body.style.top = '0px';
+    }
+    // Nuke any injected banner iframes and tooltip
+    document.querySelectorAll('.goog-te-banner-frame, .skiptranslate > iframe, #goog-gt-tt')
+      .forEach(el => { el.style.display = 'none'; el.style.visibility = 'hidden'; });
+  }).observe(document.documentElement, { attributes: true, subtree: true, attributeFilter: ['style'] });
+</script>
+</body>
+</html>
